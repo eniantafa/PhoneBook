@@ -1,0 +1,44 @@
+﻿
+@model SmartWorkPhoneBook.Data.ViewModels.PhonebookViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Contact</h2>
+
+
+@using (Html.BeginForm("Create", "Phonebook", FormMethod.Post))
+{
+    <p class="alert alert-info"> All fields are <strong>Required</strong></p>
+
+    <div class="form-group has-success has-feedback">
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", autofocus = "autofocus", placeholder = "AA21B" })
+        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Type)
+        @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger", placeholder = "Enter the Contact Number" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "+3556XXXXXXX" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+    </div>
+
+}
+
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}

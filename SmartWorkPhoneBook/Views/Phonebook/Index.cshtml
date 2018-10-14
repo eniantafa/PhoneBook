@@ -1,0 +1,52 @@
+﻿@using SmartWorkPhoneBook.Data.Models
+@model List<Phonebook>
+
+@{
+    ViewData["Title"] = "Phonebook";
+}
+
+
+
+<button type="button" class="btn btn-default"> @Html.ActionLink("Add New", "CreatePhonebook", "Phonebook") </button>
+
+
+
+
+@if (Model.Any())
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr class="info">
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Type</td>
+                <td>Number</td>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Phonebook phonebook in Model)
+            {
+            <tr>
+                <td>@phonebook.FirstName</td>
+                <td>@phonebook.LastName</td>
+                
+                <td>@phonebook.Type</td>
+                <td>@phonebook.PhoneNumber</td>
+                <td type="button" class="btn btn-default ">@Html.ActionLink("Edit", "Edit", "Phonebook", new { @id = phonebook.Id })</td>
+                <td type="button" class="btn btn-default ">@Html.ActionLink("Delete", "Delete", "Phonebook", new { @id = phonebook.Id })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+}
+
+else
+{
+    <h1 class="text-center text-danger">There are no Contacts in your Phonebook yet!</h1>
+
+}
+
